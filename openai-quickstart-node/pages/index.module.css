@@ -1,0 +1,158 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+.body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* full viewport height */
+  margin: 0;
+  font-family: "Press Start 2P", monospace;
+  background: radial-gradient(circle at top, #0b0b2e, #000);
+  color: #00ffea;
+}
+
+/* optional retro grid overlay */
+.body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.03) 0px,
+    rgba(255,255,255,0.03) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+  pointer-events: none;
+  z-index: 999;
+}
+
+.heading1 {
+  font-size: 33px;
+  color: #1023f6;
+  text-align: center;
+  text-shadow:
+    0 0 5px #008fb6,
+    0 0 10px #00ffff,
+    0 0 20px #00ffff;
+  animation: flicker 3s infinite;
+  margin: 20px 0;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.85; }
+}
+
+.chatContainer {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  padding-bottom: 220px; /* <- bigger than input height */
+  box-sizing: border-box;
+}
+
+.userMessage,
+.assistantMessage {
+  padding: 12px 16px;
+  border-radius: 4px;
+  max-width: 80%;
+  word-wrap: break-word;
+  line-height: 1.6;  
+  margin-bottom: 16px;
+}
+
+.userMessage {
+  background: #1a1a3d;
+  color: #00ff00;
+  align-self: flex-end;
+  border: 2px solid #00ff00;
+  box-shadow: 0 0 8px #00ff00;
+}
+
+.assistantMessage {
+  background: #1a1a3d;
+  color: #ffeb3b;
+  align-self: flex-start;
+  border: 2px solid #ffeb3b;
+  box-shadow: 0 0 8px #ffeb3b;
+}
+
+/* MESSAGE INPUT */
+.messageInputContainer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background: #0d39fd;
+  border-top: 1px solid #00000f;
+  display: flex;
+  justify-content: center;
+  z-index: 10; /* stay above chat messages */
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.textarea {
+  width: 100%;
+  min-width: 400px;
+  max-width: 600px;
+  height: 120px;
+  padding: 16px;
+  background: #000;
+  color: #00ff00;
+  border: 2px solid #00ff00;
+  font-family: "Press Start 2P", monospace;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.textarea::placeholder {
+  color: #00ff00;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.inputSubmit,
+.inputButton {
+  font-family: "Press Start 2P", monospace;
+  padding: 12px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  flex: 1;
+}
+
+.inputSubmit {
+  background: #16db00;
+  color: #fff;
+  box-shadow: 0 4px #56b210;
+}
+
+.inputSubmit:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 #b2102f;
+}
+
+.inputButton {
+  background: #2979ff;
+  box-shadow: 0 4px #0d47a1;
+  color: #fff;
+}
